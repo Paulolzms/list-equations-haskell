@@ -1,0 +1,31 @@
+# Arquivos de compilação
+dist/
+dist-newstyle/
+*.o
+*.hi
+*.chi
+*.chs.h
+*.dyn_o
+*.dyn_hi
+
+# Cabal e Stack
+.cabal-sandbox/
+cabal.sandbox.config
+.stack-work/
+
+# GHCi
+.ghci
+.ghc.environment.*
+
+# Binários locais
+*.exe
+*.out
+
+# Arquivos temporários do sistema/IDE
+*.swp
+*.swo
+*.bak
+*~
+.DS_Store
+.idea/
+.vscode/
