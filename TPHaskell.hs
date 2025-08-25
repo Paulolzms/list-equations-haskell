@@ -49,6 +49,8 @@ expressions ns =
 
 -- Função para dividir uma lista em duas partes não vazias
 splits :: [a] -> [([a], [a])]
-splits [] = []
-splits [_] = []
-splits (x:xs) = ([x], xs) : [ (x:xs, ds) | (es, ds) <- splits xs ]
+splits xs = go [] xs
+  where
+    go _ [] = []
+    go _ [_] = []
+    go prefix (x:suffix) = (reverse (x:prefix), suffix) : go (x:prefix) suffix
