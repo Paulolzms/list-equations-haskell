@@ -63,3 +63,21 @@ formatExpr (Sub e1 e2) = "(" ++ formatExpr e1 ++ " - " ++ formatExpr e2 ++ ")"
 formatExpr (Mult e1 e2) = "(" ++ formatExpr e1 ++ " * " ++ formatExpr e2 ++ ")"
 formatExpr (Div e1 e2) = "(" ++ formatExpr e1 ++ " / " ++ formatExpr e2 ++ ")"
 
+-- (d) Função principal solution
+solution :: [Int] -> [(String, String)]
+solution nums = do
+    (leftNums, rightNums) <- splits nums
+    leftExpr <- expressions leftNums
+    rightExpr <- expressions rightNums
+    Ok val1 <- return (eval leftExpr)
+    Ok val2 <- return (eval rightExpr)
+    if val1 == val2 
+      then return (formatExpr leftExpr, formatExpr rightExpr)
+    else []
+
+main :: IO ()
+main = do
+    let list = [4, 2, 2]
+    let results = solution list
+    putStrLn $ "Encontradas " ++ show (length results) ++ " soluções para a lista " ++ show list
+    mapM_ (\(l, r) -> putStrLn $ l ++ " = " ++ r) results
