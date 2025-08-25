@@ -54,3 +54,12 @@ splits xs = go [] xs
     go _ [] = []
     go _ [_] = []
     go prefix (x:suffix) = (reverse (x:prefix), suffix) : go (x:prefix) suffix
+
+-- Função para formatar uma expressão como string
+formatExpr :: Expr -> String
+formatExpr (Lit n) = show n
+formatExpr (Sum e1 e2) = "(" ++ formatExpr e1 ++ " + " ++ formatExpr e2 ++ ")"
+formatExpr (Sub e1 e2) = "(" ++ formatExpr e1 ++ " - " ++ formatExpr e2 ++ ")"
+formatExpr (Mult e1 e2) = "(" ++ formatExpr e1 ++ " * " ++ formatExpr e2 ++ ")"
+formatExpr (Div e1 e2) = "(" ++ formatExpr e1 ++ " / " ++ formatExpr e2 ++ ")"
+
